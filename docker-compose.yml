@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:13.3-alpine
+    shm_size: 2g
+    environment:
+      POSTGRES_DB: db_name
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOSTNAME: postgres
+      POSTGRES_PORT: 5432
+    volumes:
+      - ./data-pgsql:/var/lib/postgresql/data
+    networks:
+      - rpg_manager
+  app:
+    build:
+      context: ./manager
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes: 
+      - "./manager:/app"
+    depends_on:
+        - postgres
+    environment:
+      POSTGRES_DB: db_name
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOSTNAME: postgres
+      POSTGRES_PORT: 5432
+      DJANGO_ALLOWED_HOSTS: 0.0.0.0
+      SECRET_KEY: "django-insecure-^^$*#k#ogvjobfxzhe@(cuk-a^te-ot+f%ng=2d$ie!24s&4cu"
+    networks:
+      - rpg_manager
+
+networks:
+  rpg_manager:
+    name: rpg_manager
+    driver: bridge

@@ -1,0 +1,8 @@
+<h1>Personnages</h1>
+<ul>
+{% for character in object_list %}
+    <li>{{ character.name }}</li>
+{% empty %}
+    <li>Pas encore de personnages</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+venv
+venv/
+/venv
+
+/data-pgsql
+.pytest_cache
+__pycache__
+docker-compose.override.yml
