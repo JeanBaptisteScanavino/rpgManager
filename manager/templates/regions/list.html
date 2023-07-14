@@ -1,0 +1,9 @@
+<h1>Régions</h1>
+<ul>
+{% for region in object_list %}
+    <li>{{ region.name }}</li>
+{% empty %}
+    <li>Pas encore de régions</li>
+{% endfor %}
+<a href="{% url 'regions-creation' %}"> Créer une nouvelle région </a>
+</ul>

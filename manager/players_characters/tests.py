@@ -1,8 +1,8 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from faker import Faker
 from faker_file.providers.pdf_file import PdfFileProvider
-from faker_file.providers.pdf_file.generators.pdfkit_generator import PdfkitPdfGenerator
-
+from faker_file.providers.pdf_file.generators.pdfkit_generator import \
+    PdfkitPdfGenerator
 from players_characters.models import PlayersCharacters
 
 fake = Faker()
@@ -54,7 +54,7 @@ class CreatePlayersCharacters(TestCase):
         }
         response = client.post("/characters/create", character)
         assert not response.status_code == 404
-        new_character = PlayersCharacters.objects.get(name='Eva001')
+        new_character = PlayersCharacters.objects.get(name="Eva001")
         assert new_character.name == "Eva001" and new_character.player == "Pierre"
 
 
@@ -91,7 +91,7 @@ class UpdatePlayersCharacters(TestCase):
         response = client.post(f"/characters/update/{character.pk}", update)
         assert not response.status_code == 404, f"response = {response.status_code}"
         update_character = PlayersCharacters.objects.get(name="Shinji")
-        assert update_character.name == "Shinji" 
+        assert update_character.name == "Shinji"
         assert update_character.player == "Pierre"
 
 

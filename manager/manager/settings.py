@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [os.getenv("DJANGO_ALLOWED_HOSTS")]
 # Application definition
 
 INSTALLED_APPS = [
+    "world.apps.WorldConfig",
     "players_characters.apps.PlayersCharactersConfig",
     "django.contrib.admin",
     "django.contrib.auth",
