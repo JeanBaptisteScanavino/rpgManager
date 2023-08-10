@@ -1,5 +1,6 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from faker import Faker
+
 from world.models import Regions
 
 fake = Faker()
@@ -20,7 +21,7 @@ class RegionsCreationTest(TestCase):
         assert region.region_maps_url == None
         assert region.description == None
         assert region.history_in_campaign == None
-    
+
     def test_regions_creation_with_name_and_request(self):
         region = {
             "name": "Muick",
@@ -34,8 +35,8 @@ class RegionsCreationTest(TestCase):
         assert new_region.politic == None
         assert new_region.chief == None
         assert new_region.region_maps_url == None
-        assert new_region.description == ''
-        assert new_region.history_in_campaign == ''
+        assert new_region.description == ""
+        assert new_region.history_in_campaign == ""
 
 
 class RegionsUpdateTest(TestCase):
@@ -73,7 +74,8 @@ class RegionsUpdateTest(TestCase):
         assert update_region.politic == "Matronnie"
         assert update_region.chief == "Toad"
         assert (
-            update_region.region_maps_url == "https://www.aidedd.org/atlas/index.php?map=P&l=0"
+            update_region.region_maps_url
+            == "https://www.aidedd.org/atlas/index.php?map=P&l=0"
         )
         assert update_region.description == fake_region_description
         assert region.history_in_campaign == None

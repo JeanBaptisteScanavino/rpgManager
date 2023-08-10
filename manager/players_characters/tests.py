@@ -3,6 +3,7 @@ from faker import Faker
 from faker_file.providers.pdf_file import PdfFileProvider
 from faker_file.providers.pdf_file.generators.pdfkit_generator import \
     PdfkitPdfGenerator
+
 from players_characters.models import PlayersCharacters
 
 fake = Faker()

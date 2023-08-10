@@ -1,8 +1,10 @@
 <h1>Personnages</h1>
 <ul>
 {% for character in object_list %}
-    <li>{{ character.name }}</li>
+    <li>{{ character.pk }} <a href="{% url 'characters:players-characters-details' character.pk %}"> {{ character.name }}</a></li>
+    {% comment %} <li>{{ character.pk }} <a href="/characters/{{character.pk}}"> {{ character.name }}</a></li> {% endcomment %}
 {% empty %}
     <li>Pas encore de personnages</li>
 {% endfor %}
+<a href="{% url 'characters:players-characters-creation' %}"> Create Character </a>
 </ul>
